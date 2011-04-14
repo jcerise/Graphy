@@ -10,7 +10,10 @@ import java.util.Random;
 import javax.swing.JPanel;
 
 /**
- * @author jeremy
+ * @author Jeremy Cerise
+ * @version 4/14/2011
+ *
+ * The main drawing panel where the graphs are displayed
  */
 public class GraphyPanel extends JPanel {
 

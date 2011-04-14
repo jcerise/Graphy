@@ -7,7 +7,12 @@ package graphy;
 
 /**
  *
- * @author jeremy
+ * @author Jeremy Cerise
+ * @version 4/14/2011
+ *
+ * Graphy is a small, lightweight, data visulization utility that allows you to
+ * quickly import a datasource, and then display and animate the resulting
+ * graphs in a clean, easy to understand format.
  */
 
 import javax.swing.SwingUtilities;

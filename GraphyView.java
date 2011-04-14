@@ -3,6 +3,7 @@ package graphy;
 /**
  * @author Jeremy Cerise
  * @version 4/14/2011
+ * 
  * This doesn't do anything yet, but you can bet it will eventually be able to
  * visualize you some datas.
  */
