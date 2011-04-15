@@ -8,6 +8,7 @@ package graphy;
  * visualize you some datas.
  */
 
+import java.awt.Dimension;
 import javax.swing.JFrame;
 
 public class GraphyView extends JFrame{
@@ -17,6 +18,7 @@ public class GraphyView extends JFrame{
     setSize(800, 600);
     setLocationRelativeTo(null);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    setMinimumSize(new Dimension(250,150));
   }
 
 }

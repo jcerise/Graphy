@@ -18,9 +18,16 @@ public class Graph {
   int yScaleMax;
   int xScaleMin;
   int yScaleMin;
+  int xRange;
+  int yRange;
   ArrayList points;
   ArrayList<String> axes;
   String graphType;
+
+  public void Graph(int xScaleMin, int yScaleMin, int xScaleMax, int yScaleMax,
+          ArrayList points, ArrayList axes, String graphType){
+      
+  }
 
   public void setAxes(ArrayList<String> axes) {
     this.axes = axes;
