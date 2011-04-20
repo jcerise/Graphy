@@ -16,6 +16,7 @@ package graphy;
  */
 
 import javax.swing.SwingUtilities;
+import reporter.ReporterConsole;
 
 public class Main {
 
@@ -25,8 +26,11 @@ public class Main {
     public static void main(String[] args) {
       SwingUtilities.invokeLater(new Runnable() {
         public void run() {
+          ReporterConsole console = new ReporterConsole();
+          console.initialize();
+          console.i("Main", "Initialized reporter, starting up Graphy");
           GraphyView graphy = new GraphyView();
-          GraphyPanel graphPanel = new GraphyPanel();
+          GraphyPanel graphPanel = new GraphyPanel(console);
           graphy.add(graphPanel);
           graphy.setVisible(true);
         }

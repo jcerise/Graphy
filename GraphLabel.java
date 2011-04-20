@@ -10,9 +10,9 @@ package graphy;
  */
 public class GraphLabel {
 
-    public String labelText;
-    public float xPosition;
-    public float yPosition;
+    private String labelText;
+    private float xPosition;
+    private float yPosition;
 
     public GraphLabel(String labelText, float xPosition, float yPosition){
         this.labelText = labelText;

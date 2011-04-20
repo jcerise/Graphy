@@ -10,6 +10,7 @@ import java.awt.geom.Line2D;
 import java.util.ArrayList;
 
 import javax.swing.JPanel;
+import reporter.ReporterConsole;
 
 /**
  * @author Jeremy Cerise
@@ -31,16 +32,20 @@ public class GraphyPanel extends JPanel {
     private static final int WINDOW_OFFSET_Y = 40;
     private static final int INTERVAL_WIDTH = 10;
 
-    public GraphyPanel() {
+    ReporterConsole console;
+
+    public GraphyPanel(ReporterConsole console) {
         xScaleMin = 0;
         xScaleMax = 100;
         yScaleMin = 0;
         yScaleMax = 100;
 
+        this.console = console;
+
         //Add ten percent to teh max y scale, to make sure all data is displayed
         yCeiling = Math.round(yScaleMax * .10);
         yScaleMax += yCeiling;
-        System.out.println("Adding 10% ("+yCeiling+") to yScaleMax. New max y scale is: "+yScaleMax );
+        console.i("Setup","Adding 10% ("+yCeiling+") to yScaleMax. New max y scale is: "+yScaleMax );
     }
 
     @Override
@@ -54,7 +59,7 @@ public class GraphyPanel extends JPanel {
 
         //Get the size of the current active window
         Dimension size = getSize();
-        System.out.println("Height="+size.getHeight()+", yScale="+yScaleMax);
+        console.d("Window Size","Height="+size.getHeight()+", yScale="+yScaleMax);
         Insets insets = getInsets();
 
         int width = size.width - insets.left - insets.right;
@@ -79,7 +84,6 @@ public class GraphyPanel extends JPanel {
         for(GraphLabel label : yAxisLabels){
             //We need to check the width of the current label, to ensure we
             //display it in the rigth position next to the graph
-            System.out.println("Processing labels: width of current label = " + metrics.stringWidth(label.getLabelText()));
             int offset = metrics.stringWidth(label.getLabelText());
             g2.drawString(label.getLabelText(), label.getxPosition() - offset, label.getyPosition());
         }
@@ -114,13 +118,12 @@ public class GraphyPanel extends JPanel {
         //of our current y axis. If there are, divide by two until we can
         //display them all a reasonable distance apart.
         while (intervalSpace < 15.0){
-            System.out.println("range too large; intervalSpace="+intervalSpace+", yScale="+tempYScale);
+            console.w("Window Size","range too large; intervalSpace="+intervalSpace+", yScale="+tempYScale);
             tempYScale = tempYScale/2;
             intervalSpace = (float)yAxisHeight/(float)tempYScale;
         }
 
-        System.out.println("Total intervals present: " + tempYScale);
-        System.out.println("Numeric Interval Height: " + yScaleMax/tempYScale);
+        console.d("Window Size","Numeric Interval Height: " + yScaleMax/tempYScale);
 
         int numericSpacing = yScaleMax/tempYScale;
 
