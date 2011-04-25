@@ -16,6 +16,7 @@ public class GraphLabel {
 
     public GraphLabel(String labelText, float xPosition, float yPosition){
         this.labelText = labelText;
+        
         this.xPosition = xPosition;
         this.yPosition = yPosition;
     }

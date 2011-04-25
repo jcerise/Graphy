@@ -14,7 +14,7 @@ import javax.swing.JFrame;
 public class GraphyView extends JFrame{
 
   public GraphyView(){
-    setTitle("Graphy - An Entire Presentation in your pocket");
+    setTitle("Graphy - Data Visualization in the Palm of Your Hand");
     setSize(800, 600);
     setLocationRelativeTo(null);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

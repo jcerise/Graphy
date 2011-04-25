@@ -2,6 +2,7 @@
 package reporter;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
@@ -37,19 +38,19 @@ public class InfoPanel extends JPanel {
         for(LogItem item : logItems){
             switch(item.getType()){
                 case 1:
-                    g2.setColor(Color.BLUE);
+                    g2.setColor(new Color(0,34,170));
                     logMessage = "[DEBUG]";
                     break;
                 case 2:
-                    g2.setColor(Color.CYAN);
+                    g2.setColor(new Color(0,170,0));
                     logMessage = "[INFO]";
                     break;
                 case 3:
-                    g2.setColor(Color.RED);
+                    g2.setColor(new Color(255,117,0));
                     logMessage = "[ERROR]";
                     break;
                 case 4:
-                    g2.setColor(Color.ORANGE);
+                    g2.setColor(new Color(204,119,0));
                     logMessage = "[WARN]";
                     break;
                 default:
@@ -59,11 +60,28 @@ public class InfoPanel extends JPanel {
             logMessage += "(" + item.getTag() + ") " + item.getMessage();
             g2.drawString(logMessage, 5, yOffset);
             yOffset += 15;
+            //Update the size of the panel so the scrollbars will function
+            //correctly
+            setPreferredSize(new Dimension(500, yOffset));
         }
     }
 
+    /**
+     * Add a new logItem to the panel, and then redraw the panel so it shows
+     * @param item The LogItem to add to the panel
+     */
     public void appendToLogItems(LogItem item) {
         logItems.add(item);
+        repaint();
+    }
+
+    /**
+     * Clears out all entries in the panel and redraws the panel
+     */
+    public void clearLog(){
+        logItems.clear();
+        repaint();
+
     }
 
     public ArrayList<LogItem> getLogItems() {
